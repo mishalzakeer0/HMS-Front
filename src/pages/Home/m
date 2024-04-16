@@ -1,0 +1,39 @@
+      <div className="container-fluid d-flex p-5 bg-light-subtle justify-content-around">
+        <div className="">
+          <h4>Medic.</h4>
+          <p>kerala, India</p>
+          <p>
+            {" "}
+            <PhoneFill /> +91 123456789
+          </p>
+          <p>
+            {" "}
+            <Mailbox /> info@medic.com
+          </p>
+        </div>
+        <div className="">
+          <h4>Quick Links</h4>
+          <a className="text-secondary" href="#">
+            Home
+          </a>
+          <br />
+          <a className="text-secondary" href="#">
+            Message Us
+          </a>
+          <br />
+          <a className="text-secondary" href="#">
+            Appointments
+          </a>
+        </div>
+        <div className="">
+          <h4>Social Media</h4>
+          <p>
+            {" "}
+            <Facebook /> facebook
+          </p>
+          <p>
+            {" "}
+            <Instagram /> instagram
+          </p>
+        </div>
+      </div>

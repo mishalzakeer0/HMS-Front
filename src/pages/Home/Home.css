@@ -15,6 +15,18 @@ a:active {
     text-decoration: none;
 }
 
+.footer-content{
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    max-width: auto;
+
+}
+h4{
+    width: max-content;
+}
+
 @media (min-width: 992px) {
     #small-screen {
         display: none !important;
@@ -32,4 +44,5 @@ a:active {
     .Img{
         align-content: center;
     }
+    
 }
