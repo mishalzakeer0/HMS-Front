@@ -1,0 +1,35 @@
+a:link {
+    text-decoration: none;
+
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+@media (min-width: 992px) {
+    #small-screen {
+        display: none !important;
+    }
+}
+
+@media (max-width: 992px) {
+    #big-screen {
+        display: none !important;
+    }
+    .texts{
+        padding: 10px !important;
+        text-align: center !important;
+    }
+    .Img{
+        align-content: center;
+    }
+}
