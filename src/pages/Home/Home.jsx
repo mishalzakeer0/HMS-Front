@@ -1,7 +1,7 @@
 import React from "react";
 import { ChatDotsFill, PhoneFill, Mailbox, Facebook, Instagram} from "react-bootstrap-icons";
 import {} from "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import DrImg from '../assets/images/doctor.png'
+import DrImg from '../../assets/images/doctor.png'
 import './Home.css'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -22,10 +22,10 @@ const Home = () => {
                 <Navbar.Collapse id="basic-navbar-nav">
                   <Nav className="me-auto">
                     <Nav.Link href="/">Home</Nav.Link>
-                    <Nav.Link href="Doctor/Login">Doctor Login</Nav.Link>
+                    <Nav.Link href="doctorLogin">Doctor Login</Nav.Link>
                     <Nav.Link href="Appointment">Appointment</Nav.Link>
-                    <Nav.Link href="Message">Message</Nav.Link>
-                    <Nav.Link id="small-screen" href="Admin/Login">
+                    <Nav.Link href="Patient">Patient</Nav.Link>
+                    <Nav.Link id="small-screen" href="adminLogin">
                       Admin Login
                     </Nav.Link>
                   </Nav>
