@@ -1,0 +1,40 @@
+.body-div{
+    background-color: rgb(242, 253, 253);
+    height: max-content;
+}
+.appointment-form{
+    background-color: aliceblue;
+   width: max-content;
+    border-radius: 5%;
+    
+}
+
+.input-form{
+    width: 80% !important;
+    
+}
+
+.appointment-form{
+    box-shadow: 0.25rem .5rem 1rem rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 792px) {
+    .right{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .left{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .arrows{
+        display: flex;
+        flex-direction: column;
+    }
+    .heading{
+        text-align: center;
+
+    }
+  }

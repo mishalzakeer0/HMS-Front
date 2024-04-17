@@ -1,7 +1,7 @@
 import React from "react";
 import { ChatDotsFill, PhoneFill, Mailbox, Facebook, Instagram} from "react-bootstrap-icons";
 import {} from "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import DrImg from '../assets/pexels-cottonbro-studio-5867737-removebg-preview.png'
+import DrImg from '../assets/images/doctor.png'
 import './Home.css'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -12,38 +12,39 @@ import Col from 'react-bootstrap/Col';
 const Home = () => {
   return (
     <>
-
-<Container fluid  style={{ backgroundColor: "#e0f0f0" }}>
-  <Row>
-    <Col>
-      <Navbar expand="lg" className="d-flex flex-wrap align-items-center">
-        <Container>
-          <Navbar.Brand href="#home">Medic.</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#doctor">Doctor</Nav.Link>
-              <Nav.Link href="#appointment">Appointment</Nav.Link>
-              <Nav.Link href="#message">Message</Nav.Link>
-              <Nav.Link id="small-screen" href="#contact-us" >Contact</Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-    </Col>
-    <Col id="big-screen" style={{display:"flex", justifyContent: "end", alignItems: 'center' }} >
-      <button type="button" className="btn btn-outline-primary rounded-pill" style={{width: 'auto', height: 'fit-content'}}>
-        Contact Us
-      </button>
-    </Col>
-  </Row>
-</Container>
+      <Container fluid className="navbar-items">
+        <Row>
+          <Col>
+            <Navbar expand="lg" className="d-flex flex-wrap align-items-center">
+              <Container>
+                <Navbar.Brand href="#home">Medic.</Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                  <Nav className="me-auto">
+                    <Nav.Link href="/">Home</Nav.Link>
+                    <Nav.Link href="Doctor/Login">Doctor Login</Nav.Link>
+                    <Nav.Link href="Appointment">Appointment</Nav.Link>
+                    <Nav.Link href="Message">Message</Nav.Link>
+                    <Nav.Link id="small-screen" href="Admin/Login">
+                      Admin Login
+                    </Nav.Link>
+                  </Nav>
+                </Navbar.Collapse>
+              </Container>
+            </Navbar>
+          </Col>
+          <Col id="big-screen" className="contact-div">
+            <button
+              type="button"
+              className="btn btn-outline-primary rounded-pill contact-btn"
+            >
+              Admin Login
+            </button>
+          </Col>
+        </Row>
+      </Container>
       <Container fluid className="p-0">
-        <Row
-          className="justify-content-center"
-          style={{ backgroundColor: "#e3f2fd", gap: "2rem" }}
-        >
+        <Row className="body-content">
           <Col>
             <div
               className="texts container-fluid"
@@ -56,7 +57,7 @@ const Home = () => {
                 We Ensure <br /> the Best
                 <span className="text-secondary-emphasis ms-1 me-1">
                   Health
-                </span>{" "}
+                </span>
                 <br />
                 service for You.
               </h1>
@@ -67,10 +68,7 @@ const Home = () => {
               </p>
               <button
                 type="button"
-                className="btn btn-primary btn-lg"
-                style={{
-                  boxShadow: " 0 .5rem 1rem rgba(0,0,0,0.3)",
-                }}
+                className="btn btn-primary btn-lg appointment-btn"
               >
                 Get Appointment
               </button>
@@ -83,8 +81,8 @@ const Home = () => {
           </Col>
         </Row>
       </Container>
-      <Container fluid style={{backgroundColor: "#eAf1f1", padding: '0'}}>
-        <Row className="Footer d-flex container-fluid justify-content-around p-5 gap-5"> 
+      <Container fluid className = "footer">
+        <Row className=" d-flex container-fluid justify-content-around p-5 gap-5">
           <Col>
             <div className="footer-content">
               <h4>Medic.</h4>
