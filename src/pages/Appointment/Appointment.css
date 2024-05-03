@@ -13,6 +13,10 @@
     width: 80% !important;
     
 }
+.Fit {
+    height: 230.8984375px;
+  }
+  
 
 .appointment-form{
     box-shadow: 0.25rem .5rem 1rem rgba(0, 0, 0, 0.3);

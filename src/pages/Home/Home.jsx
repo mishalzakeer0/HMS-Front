@@ -9,7 +9,12 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { useNavigate } from "react-router-dom";
 const Home = () => {
+  const navigate = useNavigate();
+  const buttonSubmit = () => {
+    navigate('/PatientLogin/PatientDashboard/Appointment');
+  }
   return (
     <>
       <Container fluid className="navbar-items">
@@ -22,9 +27,9 @@ const Home = () => {
                 <Navbar.Collapse id="basic-navbar-nav">
                   <Nav className="me-auto">
                     <Nav.Link href="/">Home</Nav.Link>
-                    <Nav.Link href="doctorLogin">Doctor Login</Nav.Link>
-                    <Nav.Link href="Appointment">Appointment</Nav.Link>
-                    <Nav.Link href="Patient">Patient</Nav.Link>
+                    <Nav.Link href="DoctorLogin">Doctor Login</Nav.Link>
+                    <Nav.Link href="AdminLogin">Admin Login</Nav.Link>
+                    <Nav.Link href="PatientLogin">Patient</Nav.Link>
                     <Nav.Link id="small-screen" href="adminLogin">
                       Admin Login
                     </Nav.Link>
@@ -69,6 +74,7 @@ const Home = () => {
               <button
                 type="button"
                 className="btn btn-primary btn-lg appointment-btn"
+                onClick={buttonSubmit}
               >
                 Get Appointment
               </button>
