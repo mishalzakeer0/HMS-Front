@@ -30,9 +30,9 @@ const AdminLogin = () => {
       
       console.log(response,"response")
       if (response.status === 200) {
-        // localStorage.setItem('data', response.data)
-        localStorage.clear()
-        console.log("LS", localStorage)
+        localStorage.setItem('data', JSON.stringify({ data: response.data, role: 'Admin' }));
+        // localStorage.clear()
+        
         navigate("/AdminLogin/Dashboard");
         dispatch(
           login({

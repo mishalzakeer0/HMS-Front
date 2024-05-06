@@ -9,7 +9,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 const Home = () => {
   const navigate = useNavigate();
   const buttonSubmit = () => {
@@ -22,17 +22,25 @@ const Home = () => {
           <Col>
             <Navbar expand="lg" className="d-flex flex-wrap align-items-center">
               <Container>
-                <Navbar.Brand href="#home">Medic.</Navbar.Brand>
+              <Navbar.Brand as={Link} to="/">Medic.</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                   <Nav className="me-auto">
-                    <Nav.Link href="/">Home</Nav.Link>
-                    <Nav.Link href="DoctorLogin">Doctor Login</Nav.Link>
-                    <Nav.Link href="AdminLogin">Admin Login</Nav.Link>
-                    <Nav.Link href="PatientLogin">Patient</Nav.Link>
-                    <Nav.Link id="small-screen" href="adminLogin">
+                    <Link className="p-2 text-secondary" to="/">
+                      Home
+                    </Link>
+                    <Link className="p-2 text-secondary" to="DoctorLogin">
+                      Doctor Login
+                    </Link>
+                    <Link className="p-2 text-secondary" to="AdminLogin">
                       Admin Login
-                    </Nav.Link>
+                    </Link>
+                    <Link className="p-2 text-secondary" to="PatientLogin">
+                      Patient Login
+                    </Link>
+                    <Link className="p-2 text-secondary" id="small-screen" to="adminLogin">
+                      Admin Login
+                    </Link>
                   </Nav>
                 </Navbar.Collapse>
               </Container>
@@ -87,7 +95,7 @@ const Home = () => {
           </Col>
         </Row>
       </Container>
-      <Container fluid className = "footer">
+      <Container fluid className="footer">
         <Row className=" d-flex container-fluid justify-content-around p-5 gap-5">
           <Col>
             <div className="footer-content">

@@ -33,8 +33,9 @@ const PatientLogin = () => {
     
       // console.log(response,"response")
       if (response.status === 200) {
-        localStorage.setItem('data', JSON.stringify(response.data));
-        // localStorage.clear();
+        localStorage.setItem('data', JSON.stringify({ data: response.data, role: 'Patient' }));
+
+        
         
         
         
