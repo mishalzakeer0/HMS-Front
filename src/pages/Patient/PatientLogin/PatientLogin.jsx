@@ -31,11 +31,12 @@ const PatientLogin = () => {
       }
       );
     
-      console.log(response,"response")
+      // console.log(response,"response")
       if (response.status === 200) {
-        // localStorage.setItem('data', response.data)
-        localStorage.clear();
-        console.log("LS", localStorage);
+        localStorage.setItem('data', JSON.stringify(response.data));
+        // localStorage.clear();
+        
+        
         
         navigate("/PatientLogin/Dashboard");
         dispatch(

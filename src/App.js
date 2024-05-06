@@ -12,25 +12,31 @@ import DoctorLogin from './pages/Doctor/DoctorLogin'
 import AdminLogin from './pages/Admin/AdminLogin';
 import { useSelector } from 'react-redux';
 import { selectUser } from './feature/userSlice';
+import { Navigate } from "react-router-dom"
+
 
 const App = () => {
   const user = useSelector(selectUser)
   useEffect(() => {
     console.log(user, 'user');
   },[])
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
+  const navigate = useNavigate();
+  const storedData = JSON.parse(localStorage.getItem('data'));
  
   return (
     <Routes>
       <Route path="/" element={<Home />}></Route>
       <Route path="/PatientLogin" element={<PatientLogin />}></Route>
       <Route path="/PatientLogin/Dashboard" element={<PatientDashboard />}></Route>
-      {/* <Route path="/PatientLogin/PatientDashboard/Appointment" element={<Appointment />}></Route> */}
-      {user!==null ? (<Route path="/PatientLogin/Dashboard/Appointment" element={<Appointment />}></Route>): <Route path="/PatientLogin" element={<PatientLogin />}></Route>}
-      
-      {/* {user? console.log("true"): console.log('false')}
-       */}
-      <Route path="/DoctorLogin" element={<DoctorLogin />}></Route>
+      {storedData.token ? (<Route path="/PatientLogin/Dashboard/Appointment" element={<Appointment />}></Route>):(
+        <Route
+          path="/*"
+          element={ <Navigate to="/PatientLogin" /> }
+        />
+      )}
+    
+      <Route path="/DoctorLogin" element={<DoctorLogin />}/>
       <Route path="/DoctorLogin/Dashboard" element={<DoctorDashboard />}></Route>
       <Route path="/AdminLogin" element={<AdminLogin />}></Route>
       <Route path="/AdminLogin/Dashboard" element={<AdminDashboard />}></Route>

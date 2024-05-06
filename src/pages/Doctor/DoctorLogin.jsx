@@ -32,7 +32,9 @@ const DoctorLogin = () => {
 
       console.log(response, "response");
       if (response.status === 200) {
-        // localStorage.setItem('data', response.data)
+        localStorage.setItem('data', JSON.stringify(response.data));
+        const storedData = JSON.parse(localStorage.getItem('data'));
+
         // localStorage.clear();
         // console.log("LS", localStorage);
         dispatch(
