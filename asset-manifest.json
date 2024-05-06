@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/HMS-Front/static/css/main.c61a4e75.css",
+    "main.js": "/HMS-Front/static/js/main.496fe2cf.js",
+    "static/js/453.f9f7633d.chunk.js": "/HMS-Front/static/js/453.f9f7633d.chunk.js",
+    "static/media/doctor.png": "/HMS-Front/static/media/doctor.323fd5c3fb6e1af773a2.png",
+    "index.html": "/HMS-Front/index.html",
+    "main.c61a4e75.css.map": "/HMS-Front/static/css/main.c61a4e75.css.map",
+    "main.496fe2cf.js.map": "/HMS-Front/static/js/main.496fe2cf.js.map",
+    "453.f9f7633d.chunk.js.map": "/HMS-Front/static/js/453.f9f7633d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c61a4e75.css",
+    "static/js/main.496fe2cf.js"
+  ]
+}
