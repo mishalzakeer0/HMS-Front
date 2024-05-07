@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { IoSettings } from "react-icons/io5";
 import { signout } from '../../utils/utils';
+
 const DoctorDashboard = () => {
 
     return (
@@ -25,6 +26,7 @@ const DoctorDashboard = () => {
               </NavDropdown>
             </Nav>
           </Container>
+          
         </Navbar>
       </>
     );

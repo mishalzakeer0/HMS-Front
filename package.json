@@ -1,1 +1,59 @@
-{"homepage":"https://mishalzakeer0.github.io/HMS-Front/","name":"hms-front","version":"0.1.0","private":true,"dependencies":{"@hookform/error-message":"^2.0.1","@reduxjs/toolkit":"^2.2.3","@testing-library/jest-dom":"^5.17.0","@testing-library/react":"^13.4.0","@testing-library/user-event":"^13.5.0","axios":"^1.6.8","bootstrap":"^5.3.3","cors":"^2.8.5","react":"^18.2.0","react-bootstrap":"^2.10.2","react-bootstrap-icons":"^1.11.4","react-date-picker":"^10.6.0","react-datepicker":"^6.9.0","react-dom":"^18.2.0","react-hook-form":"^7.51.3","react-icons":"^5.2.0","react-phone-number-input":"^3.3.12","react-redux":"^9.1.1","react-router-dom":"^6.22.3","react-scripts":"5.0.1","web-vitals":"^2.1.4"},"scripts":{"start":"react-scripts start","predeploy":"npm run build","deploy":"gh-pages -d build","build":"react-scripts build","test":"react-scripts test","eject":"react-scripts eject"},"eslintConfig":{"extends":["react-app","react-app/jest"]},"browserslist":{"production":[">0.2%","not dead","not op_mini all"],"development":["last 1 chrome version","last 1 firefox version","last 1 safari version"]},"devDependencies":{"@hookform/devtools":"^4.3.1","gh-pages":"^6.1.1"}}
+{
+  "homepage": "https://mishalzakeer0.github.io/",
+  "name": "hms-front",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@hookform/error-message": "^2.0.1",
+    "@reduxjs/toolkit": "^2.2.3",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.6.8",
+    "bootstrap": "^5.3.3",
+    "cors": "^2.8.5",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.10.2",
+    "react-bootstrap-icons": "^1.11.4",
+    "react-date-picker": "^10.6.0",
+    "react-datepicker": "^6.9.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.51.3",
+    "react-icons": "^5.2.0",
+    "react-phone-number-input": "^3.3.12",
+    "react-redux": "^9.1.1",
+    "react-router-dom": "^6.22.3",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@hookform/devtools": "^4.3.1",
+    "gh-pages": "^6.1.1"
+  }
+}
