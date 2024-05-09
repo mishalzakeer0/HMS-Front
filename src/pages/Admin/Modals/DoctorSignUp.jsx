@@ -4,21 +4,23 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import PhoneInput from "react-phone-number-input";
 import { isValidPhoneNumber } from "react-phone-number-input";
-import { useForm, Controller } from "react-hook-form";
+import { useForm, Controller, useFormState } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
 import axios from "../../../api/axios";
-
-const Sample = ({ show, handClick }) => {
+const DoctorSignUp = ({ show, handClick }) => {
+  
   const [number, setNumber] = useState("");
   const {
     register,
     handleSubmit,
     formState: { errors },
     control,
+    
   } = useForm({
     mode: "onChange",
   });
-
+  const { isValid } = useFormState({control});
+  
   async function SignUp(formData) {
     try {
       console.log("Form Data:", formData);
@@ -164,7 +166,12 @@ const Sample = ({ show, handClick }) => {
             <Button variant="secondary" onClick={handClick}>
               Close
             </Button>
-            <Button type="submit" variant="primary"  onClick={handClick} disabled={Object.keys(errors).length > 0}>
+            <Button
+              type="submit"
+              variant="primary"
+              onClick={handClick}
+              disabled={ !isValid}
+            >
               Submit
             </Button>
           </Modal.Footer>
@@ -175,4 +182,4 @@ const Sample = ({ show, handClick }) => {
   );
 };
 
-export default Sample;
+export default DoctorSignUp;
