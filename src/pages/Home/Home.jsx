@@ -6,14 +6,13 @@ import './Home.css'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useNavigate, Link } from "react-router-dom";
 const Home = () => {
   const navigate = useNavigate();
   const buttonSubmit = () => {
-    navigate('/PatientLogin/PatientDashboard/Appointment');
+    navigate('/PatientLogin');
   }
   return (
     <>
@@ -48,10 +47,13 @@ const Home = () => {
           </Col>
           <Col id="big-screen" className="contact-div">
             <button
+            onClick={()=>{
+              navigate('/PatientSignUp')
+            }}
               type="button"
               className="btn btn-outline-primary rounded-pill contact-btn"
             >
-              Admin Login
+              Sign Up
             </button>
           </Col>
         </Row>

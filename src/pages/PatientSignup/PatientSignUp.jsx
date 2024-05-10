@@ -28,7 +28,7 @@ const { register, handleSubmit, formState: { errors }, control } = useForm({mode
     };
   };
 return (
-  <Container>
+  <Container fluid>
     <Row>
       {/* Sign up is here */}
       <Col md className="bg-info">

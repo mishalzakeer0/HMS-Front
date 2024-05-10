@@ -2,41 +2,41 @@ import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import axios from "../../../api/axios";
-import { ImBin2 } from "react-icons/im";
-import "./ShowPatients.css";
 import Confirmation from "./Confirmation";
+import { ImBin2 } from "react-icons/im";
 import Table from "react-bootstrap/Table";
 
-const ShowPatients = ({ show, handClick, token, user }) => {
-  const [patients, setPatients] = useState([]);
+const ShowMessage = ({ show, handClick, token, user}) => {
+  const [messages, setMessages] = useState([]);
   const [confirm, setConfirm] = useState(false);
   const [id, setId] = useState(0);
-  
+
+  //    console.log(messages, "mess")
   const handleClick = () => {
-    setConfirm(!confirm);
+    setConfirm(!confirm); 
   };
-  
+
   useEffect(() => {
-    const fetchData = async (token) => {
+    const fetchData = async () => {
       try {
-        // console.log(token, "token")
+        // console.log(token, "tokenhere")
         const response = await axios.get(
-          `http://localhost:3001/${user}/patient/all`,
+          `http://localhost:3001/${user}/message/all`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
             },
           }
         );
-        setPatients(response.data);
+        //   console.log(response.data.message, "msg")
+        setMessages(response.data.message);
       } catch (error) {
-        console.error("Error fetching patients:", error);
+        console.error("Error fetching Messages:", error);
       }
     };
 
-    fetchData(token);
+    fetchData();
   }, []);
-
   return (
     <Modal
       show={show}
@@ -46,32 +46,32 @@ const ShowPatients = ({ show, handClick, token, user }) => {
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">Patients</Modal.Title>
+        <Modal.Title id="contained-modal-title-vcenter">Messages</Modal.Title>
       </Modal.Header>
       <Modal.Body>
       <Table striped>
           <thead>
             <tr>
               <th>#</th>
-              <th>Patient Id</th>
-              <th> Name</th>
+              <th>Name</th>
               <th>Age</th>
               <th>Gender</th>
+              <th>Message</th>
+             
             </tr>
           </thead>
           <tbody>
-            {patients.map((patient, index) => (
-              <tr key={patient.id}>
+            {messages.map((msg, index) => (
+              <tr key={msg.id}>
                 <td>{index + 1}</td>
-                <td>{patient.id}</td>
-                <td>{patient.first_name}</td>
-                <td>{patient.age}</td>
-                <td>{patient.gender}</td>
-                
+                <td>{msg.first_name}</td>
+                <td>{msg.age}</td>
+                <td>{msg.gender}</td>
+                <td>{msg.message}</td>
                 <button
                   className="del-btn"
                   onClick={() => {
-                    setId(patient.id);
+                    setId(msg.id);
 
                     setConfirm(true);
                   }}
@@ -82,17 +82,14 @@ const ShowPatients = ({ show, handClick, token, user }) => {
             ))}
           </tbody>
         </Table>
-
-        {
-          <Confirmation
+        <Confirmation
             show={confirm}
             handleClick={handleClick}
             id={id}
             token={token}
             user={user}
-            target={"patient"}
+            target={"message"}
           />
-        }
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={handClick}>Close</Button>
@@ -101,4 +98,4 @@ const ShowPatients = ({ show, handClick, token, user }) => {
   );
 };
 
-export default ShowPatients;
+export default ShowMessage;

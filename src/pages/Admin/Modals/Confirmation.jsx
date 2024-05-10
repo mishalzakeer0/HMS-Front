@@ -2,12 +2,13 @@ import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import axios from '../../../api/axios';
-const Confirmation = ({show, handleClick, id, token}) => {
-    const deletePt = async (id, token)=>{
+const Confirmation = ({show, handleClick, id, token, user, target}) => {
+    const deleteConfirm = async (id, token)=>{
         try {
-            // console.log(token,"keykeye")
-
-            const response = await axios.delete("http://localhost:3001/doctor/patient/delete",{
+            console.log(token,"keykeye")
+            console.log(user, "user")
+            console.log(id, "ideda")
+            const response = await axios.delete(`http://localhost:3001/${user}/${target}/delete`,{
                 headers:{
                     'Authorization': `Bearer ${token}`
                 },
@@ -22,6 +23,7 @@ const Confirmation = ({show, handleClick, id, token}) => {
           }
     
       }
+     
   return (
     <div>
       <Modal
@@ -39,7 +41,7 @@ const Confirmation = ({show, handleClick, id, token}) => {
       <Modal.Body>
       <Button onClick={handleClick}>NO</Button>
         <Button onClick={()=>{
-            deletePt(id,token)
+            deleteConfirm(id,token)
         }} color='red'>Yes</Button>
       </Modal.Body>
      

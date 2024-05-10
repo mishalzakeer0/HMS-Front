@@ -12,10 +12,16 @@ import DatePicker from 'react-date-picker';
 import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import { Controller } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+
 
 const Appointment = () => {
   const form = useForm();
+  const data = localStorage.getItem("data");
+  const parsedData = JSON.parse(data);
+  const token = parsedData.data.token;
+  const patient_id = parsedData.data.id;
+  
+  // console.log(localStorage,"ls");
   const {
     register,
     handleSubmit,
@@ -26,6 +32,7 @@ const Appointment = () => {
     defaultValues: { appointment_date: new Date() },
   });
   const [doctor, setDoctor] = useState([]);
+ 
 
   useEffect(() => {
     async function getUser() {
@@ -43,11 +50,21 @@ const Appointment = () => {
   }, []);
   async function CreateAppointment(data) {
     try {
-      const response = await axios.post('http://localhost:3001/patient/appointment/create', data );
+      // console.log(token,"tok")
+      // console.log(data, "data");
+      data.patient_id = patient_id
+      console.log(data, "formdata")
+      const response = await axios.post('http://localhost:3001/patient/appointment/create', data,{
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        
+      } );
       console.log(response);
     } catch (error) {
       console.error(error);
-      console.log(localStorage)
+      // console.log(localStorage.data,"ls")
+       
     };
   };
   
@@ -102,12 +119,12 @@ const Appointment = () => {
                   <select
                     name="Doctors"
                     className="form-control input-form"
-                    {...register("Doctors", {
+                    {...register("doctor_id", {
                       required: "Select a Doctor",
                     })}
                   >
                     <option value="">Select a Doctor</option>
-                    {doctor.map((doc, index) => (
+                    {doctor.map((doc) => (
                       <option key={doc.id} value={doc.id}>
                         {doc.name}
                       </option>

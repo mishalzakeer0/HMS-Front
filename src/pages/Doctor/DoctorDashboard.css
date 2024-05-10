@@ -1,9 +1,9 @@
 #selectors{
     cursor: pointer;
     transition: transform .7s;
-    display: flex;
-    gap: 10px;
+
 }
 #selectors:hover{
     transform: scale(1.05);
 }
+

@@ -7,7 +7,7 @@ import { isValidPhoneNumber } from "react-phone-number-input";
 import { useForm, Controller, useFormState } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
 import axios from "../../../api/axios";
-const DoctorSignUp = ({ show, handClick }) => {
+const DoctorSignUp = ({ show, handClick, token, user}) => {
   
   const [number, setNumber] = useState("");
   const {
@@ -24,16 +24,38 @@ const DoctorSignUp = ({ show, handClick }) => {
   async function SignUp(formData) {
     try {
       console.log("Form Data:", formData);
-
-      const response = await axios.post(
-        "http://localhost:3001/doctor/signUp",
-        formData
-      );
+      console.log("token", token);
+  
+      let response;
+  
+      if (user === "admin") {
+        response = await axios.post(
+          "http://localhost:3001/admin/doctor/create",
+          formData,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+      } else {
+        response = await axios.post(
+          "http://localhost:3001/doctor/signUp",
+          formData,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+      }
+  
       console.log(response);
     } catch (error) {
       console.error(error);
     }
   }
+  
 
   return (
     <>

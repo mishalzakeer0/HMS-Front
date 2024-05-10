@@ -2,41 +2,42 @@ import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import axios from "../../../api/axios";
-import { ImBin2 } from "react-icons/im";
-import "./ShowPatients.css";
 import Confirmation from "./Confirmation";
+import { ImBin2 } from "react-icons/im";
 import Table from "react-bootstrap/Table";
 
-const ShowPatients = ({ show, handClick, token, user }) => {
-  const [patients, setPatients] = useState([]);
+const ShowAppointment = ({ show, handClick, token, user }) => {
+  const [appointments, setAppointment] = useState([]);
   const [confirm, setConfirm] = useState(false);
   const [id, setId] = useState(0);
-  
+
+  //    console.log(messages, "mess")
   const handleClick = () => {
+    setId();
     setConfirm(!confirm);
   };
-  
+  console.log(user, "useee");
   useEffect(() => {
-    const fetchData = async (token) => {
+    const fetchData = async () => {
       try {
-        // console.log(token, "token")
+        // console.log(token, "tokenhere")
         const response = await axios.get(
-          `http://localhost:3001/${user}/patient/all`,
+          `http://localhost:3001/${user}/appointment/all`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
             },
           }
         );
-        setPatients(response.data);
+        console.log(response.data.message, "msg");
+        setAppointment(response.data.message);
       } catch (error) {
-        console.error("Error fetching patients:", error);
+        console.error("Error fetching Messages:", error);
       }
     };
 
-    fetchData(token);
+    fetchData();
   }, []);
-
   return (
     <Modal
       show={show}
@@ -46,32 +47,31 @@ const ShowPatients = ({ show, handClick, token, user }) => {
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">Patients</Modal.Title>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Appointment
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      <Table striped>
+        <Table striped>
           <thead>
             <tr>
               <th>#</th>
+              <th>Appointment Id</th>
+              <th>Doctor Id</th>
               <th>Patient Id</th>
-              <th> Name</th>
-              <th>Age</th>
-              <th>Gender</th>
             </tr>
           </thead>
           <tbody>
-            {patients.map((patient, index) => (
-              <tr key={patient.id}>
+            {appointments.map((appointment, index) => (
+              <tr key={appointment.id}>
                 <td>{index + 1}</td>
-                <td>{patient.id}</td>
-                <td>{patient.first_name}</td>
-                <td>{patient.age}</td>
-                <td>{patient.gender}</td>
-                
+                <td>{appointment.appointment_id}</td>
+                <td>{appointment.doctor_id}</td>
+                <td>{appointment.patient_id}</td>
                 <button
                   className="del-btn"
                   onClick={() => {
-                    setId(patient.id);
+                    setId(appointment.appointment_id);
 
                     setConfirm(true);
                   }}
@@ -82,18 +82,16 @@ const ShowPatients = ({ show, handClick, token, user }) => {
             ))}
           </tbody>
         </Table>
-
-        {
-          <Confirmation
-            show={confirm}
-            handleClick={handleClick}
-            id={id}
-            token={token}
-            user={user}
-            target={"patient"}
-          />
-        }
+        <Confirmation
+          show={confirm}
+          handleClick={handleClick}
+          id={id}
+          token={token}
+          user={user}
+          target={"appointment"}
+        />
       </Modal.Body>
+
       <Modal.Footer>
         <Button onClick={handClick}>Close</Button>
       </Modal.Footer>
@@ -101,4 +99,4 @@ const ShowPatients = ({ show, handClick, token, user }) => {
   );
 };
 
-export default ShowPatients;
+export default ShowAppointment;
