@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import "./PatientDashboard.css"
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Row from "react-bootstrap/Row";
@@ -53,7 +53,7 @@ const PatientDashboard = () => {
           </Col>
    
         </Row>
-        <CreateMessage show={show === 1} handClick={handleClick}/>
+        <CreateMessage show={show === 1} handClick={handleClick} token={token} user={"patient"}/>
             
       </Container>
       </>

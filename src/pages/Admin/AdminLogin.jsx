@@ -9,6 +9,8 @@ import Col from 'react-bootstrap/Col';
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { login } from "../../feature/userSlice";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const AdminLogin = () => {
     const form = useForm();
   const {
@@ -17,6 +19,18 @@ const AdminLogin = () => {
     formState: { errors },
     control,
   } = form;
+
+  const notify = () => toast.error('Error while logging', {
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+    });
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   async function Login(data) {
@@ -44,15 +58,30 @@ const AdminLogin = () => {
         );
       }
     } catch (error) {
+      notify()
       console.error(error);
     };
   };
   return (
     <div>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
       <Container fluid className="bg-success">
         <Row>
           <Col md className=" p-5 ">
-            <h2 className="text-primary text-center pt-3 text-dark">Admin Login</h2>
+            <h2 className="text-primary text-center pt-3 text-dark">
+              Admin Login
+            </h2>
             <form className="p-4" onSubmit={handleSubmit(Login)}>
               <div className="mb-3">
                 <label className="form-label">Email address</label>

@@ -8,6 +8,8 @@ import axios from "../../api/axios";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { login } from "../../feature/userSlice";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const DoctorLogin = () => {
   const form = useForm();
   const {
@@ -16,6 +18,16 @@ const DoctorLogin = () => {
     formState: { errors },
     control,
   } = form;
+  const notify = () => toast.error('Error while logging', {
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+    });
     const navigate = useNavigate();
     const dispatch = useDispatch();
  
@@ -47,11 +59,24 @@ const DoctorLogin = () => {
         navigate('/DoctorLogin/Dashboard');
       }
     } catch (error) {
+      notify()
       console.error(error);
     }
   }
   return (
     <div>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
       <Container fluid className="bg-warning">
         <Row>
           <Col md className=" p-5 ">

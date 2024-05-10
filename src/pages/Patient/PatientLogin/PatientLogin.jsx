@@ -1,44 +1,57 @@
 // import 'react-phone-number-input/style.css'
-import { useForm } from 'react-hook-form';
-import { DevTool } from '@hookform/devtools';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import './PatientLogin.css';
-import axios from '../../../api/axios'
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { login } from '../../../feature/userSlice';
+import { useForm } from "react-hook-form";
+import { DevTool } from "@hookform/devtools";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import "./PatientLogin.css";
+import axios from "../../../api/axios";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login } from "../../../feature/userSlice";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const PatientLogin = () => {
-  
   const form = useForm();
-  
+  const notify = () => toast.error('Error while logging', {
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+    
+    });
   const {
     register,
     handleSubmit,
     formState: { errors },
     control,
   } = form;
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   async function Login(data) {
     try {
-      const response = await axios.post('http://localhost:3001/patient/Login', data,
-      {
-        headers: {"Content-Type": 'application/json'},
-        withCredentials: true
-      }
+      const response = await axios.post(
+        "http://localhost:3001/patient/Login",
+        data,
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
       );
-    
-      if (response.status === 200) {
-        console.log(response,"response")
-        localStorage.setItem('data', JSON.stringify({ data: response.data, role: 'Patient' }));
 
+      if (response.status === 200) {
         
-        
-        
-        
+        console.log(response, "response");
+        localStorage.setItem(
+          "data",
+          JSON.stringify({ data: response.data, role: "Patient" })
+        );
+
         navigate("/PatientLogin/Dashboard");
         dispatch(
           login({
@@ -48,15 +61,28 @@ const PatientLogin = () => {
             loggedIn: true,
           })
         );
-        
       }
     } catch (error) {
+      notify();
       console.error(error);
-    };
-  };
+    }
+  }
 
   return (
     <Container fluid className="bg-success">
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+        
+      />
       <Row>
         <Col md className=" p-5 bg-dark">
           <h2 className="text-primary text-center pt-3">Patient Login</h2>
@@ -106,7 +132,13 @@ const PatientLogin = () => {
               Submit
             </button>
           </form>
-          <p className="text-primary"> doesn't have an account? <span><a href='/PatientSignUp'>Sign Up here </a></span></p>
+          <p className="text-primary">
+            {" "}
+            doesn't have an account?{" "}
+            <span>
+              <a href="/PatientSignUp">Sign Up here </a>
+            </span>
+          </p>
           <DevTool control={control} />
         </Col>
       </Row>

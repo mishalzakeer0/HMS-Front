@@ -38,7 +38,7 @@ const ShowDoctor = ({ show, handClick, token, user }) => {
             };
             
             fetchData(token);
-        }, []);
+        }, [confirm]);
 
   return (
     <Modal

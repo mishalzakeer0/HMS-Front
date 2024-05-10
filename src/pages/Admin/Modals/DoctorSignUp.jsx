@@ -7,6 +7,9 @@ import { isValidPhoneNumber } from "react-phone-number-input";
 import { useForm, Controller, useFormState } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
 import axios from "../../../api/axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const DoctorSignUp = ({ show, handClick, token, user}) => {
   
   const [number, setNumber] = useState("");
@@ -20,11 +23,34 @@ const DoctorSignUp = ({ show, handClick, token, user}) => {
     mode: "onChange",
   });
   const { isValid } = useFormState({control});
+  const notifySuccess = () =>
+  toast.success("Account Successfully Created", {
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+  });
+  const notifyError = () =>
+    toast.error("Error While Creating Account", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      theme: "colored",
+    });
   
   async function SignUp(formData) {
     try {
-      console.log("Form Data:", formData);
-      console.log("token", token);
+      // console.log("Form Data:", formData);
+      // console.log("token", token);
   
       let response;
   
@@ -37,8 +63,11 @@ const DoctorSignUp = ({ show, handClick, token, user}) => {
               Authorization: `Bearer ${token}`,
             },
           }
-        );
-      } else {
+          );
+          
+      notifySuccess()
+      } 
+      else {
         response = await axios.post(
           "http://localhost:3001/doctor/signUp",
           formData,
@@ -48,10 +77,12 @@ const DoctorSignUp = ({ show, handClick, token, user}) => {
             },
           }
         );
+        notifySuccess()
       }
-  
       console.log(response);
+      
     } catch (error) {
+      notifyError()
       console.error(error);
     }
   }
@@ -59,6 +90,19 @@ const DoctorSignUp = ({ show, handClick, token, user}) => {
 
   return (
     <>
+      
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
       <Modal show={show} onHide={handClick}>
         <Form onSubmit={handleSubmit(SignUp)}>
           <Modal.Header closeButton>
@@ -192,7 +236,7 @@ const DoctorSignUp = ({ show, handClick, token, user}) => {
               type="submit"
               variant="primary"
               onClick={handClick}
-              disabled={ !isValid}
+              disabled={!isValid}
             >
               Submit
             </Button>
