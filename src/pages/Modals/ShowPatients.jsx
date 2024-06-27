@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import axios from "../../../api/axios";
+import axios from "../../api/axios";
 import { ImBin2 } from "react-icons/im";
 import "./ShowPatients.css";
 import Confirmation from "./Confirmation";
@@ -11,15 +11,14 @@ const ShowPatients = ({ show, handClick, token, user }) => {
   const [patients, setPatients] = useState([]);
   const [confirm, setConfirm] = useState(false);
   const [id, setId] = useState(0);
-  
+
   const handleClick = () => {
     setConfirm(!confirm);
   };
-  
+
   useEffect(() => {
     const fetchData = async (token) => {
       try {
-        // console.log(token, "token")
         const response = await axios.get(
           `http://localhost:3001/${user}/patient/all`,
           {
@@ -49,7 +48,7 @@ const ShowPatients = ({ show, handClick, token, user }) => {
         <Modal.Title id="contained-modal-title-vcenter">Patients</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      <Table striped>
+        <Table striped>
           <thead>
             <tr>
               <th>#</th>
@@ -67,7 +66,7 @@ const ShowPatients = ({ show, handClick, token, user }) => {
                 <td>{patient.first_name}</td>
                 <td>{patient.age}</td>
                 <td>{patient.gender}</td>
-                
+
                 <button
                   className="del-btn"
                   onClick={() => {

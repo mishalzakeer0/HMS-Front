@@ -1,4 +1,3 @@
-// import 'react-phone-number-input/style.css'
 import { useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
 import Container from "react-bootstrap/Container";
@@ -14,16 +13,16 @@ import "react-toastify/dist/ReactToastify.css";
 
 const PatientLogin = () => {
   const form = useForm();
-  const notify = () => toast.error('Error while logging', {
-    position: "top-center",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "colored",
-    
+  const notify = () =>
+    toast.error("Error while logging", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
     });
   const {
     register,
@@ -45,7 +44,6 @@ const PatientLogin = () => {
       );
 
       if (response.status === 200) {
-        
         console.log(response, "response");
         localStorage.setItem(
           "data",
@@ -69,7 +67,7 @@ const PatientLogin = () => {
   }
 
   return (
-    <Container fluid className="bg-success">
+    <Container fluid>
       <ToastContainer
         position="top-center"
         autoClose={5000}
@@ -81,10 +79,9 @@ const PatientLogin = () => {
         draggable
         pauseOnHover
         theme="colored"
-        
       />
       <Row>
-        <Col md className=" p-5 bg-dark">
+        <Col md className="p-5 bg-dark main">
           <h2 className="text-primary text-center pt-3">Patient Login</h2>
           <form className="p-4" onSubmit={handleSubmit(Login)}>
             <div className="mb-3">
@@ -128,13 +125,28 @@ const PatientLogin = () => {
                 {errors.password?.message}
               </p>
             </div>
-            <button type="submit" className="btn btn-primary" id="login button">
-              Submit
-            </button>
+            <div
+              className=" d-flex justify-content-between"
+              style={{ width: "80%" }}
+            >
+              <button
+                type="submit"
+                className="btn btn-primary"
+                id="login button"
+              >
+                Submit
+              </button>
+              <p
+                onClick={() => navigate("/PatientLogin/ForgotPassword")}
+                className="text-primary"
+                style={{ cursor: "pointer" }}
+              >
+                Forgot Password?
+              </p>
+            </div>
           </form>
           <p className="text-primary">
-            {" "}
-            doesn't have an account?{" "}
+            doesn't have an account?
             <span>
               <a href="/PatientSignUp">Sign Up here </a>
             </span>

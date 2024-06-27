@@ -1,18 +1,18 @@
-import React from 'react'
-import axios from '../../api/axios';
-import 'react-phone-number-input/style.css'
-import { useForm } from 'react-hook-form';
-import { DevTool } from '@hookform/devtools';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import React from "react";
+import axios from "../../api/axios";
+import "react-phone-number-input/style.css";
+import { useForm } from "react-hook-form";
+import { DevTool } from "@hookform/devtools";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from 'react-redux';
+import { useDispatch } from "react-redux";
 import { login } from "../../feature/userSlice";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const AdminLogin = () => {
-    const form = useForm();
+  const form = useForm();
   const {
     register,
     handleSubmit,
@@ -20,33 +20,38 @@ const AdminLogin = () => {
     control,
   } = form;
 
-  const notify = () => toast.error('Error while logging', {
-    position: "top-center",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "colored",
+  const notify = () =>
+    toast.error("Error while logging", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
     });
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
   async function Login(data) {
     try {
-      const response = await axios.post('http://localhost:3001/admin/Login', data,
-      {
-        headers: {"Content-Type": 'application/json'},
-        withCredentials: true
-      }
+      const response = await axios.post(
+        "http://localhost:3001/admin/Login",
+        data,
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
       );
-      
-      console.log(response,"response")
+
+      console.log(response, "response");
       if (response.status === 200) {
-        localStorage.setItem('data', JSON.stringify({ data: response.data, role: 'Admin' }));
-        // localStorage.clear()
-        
+        localStorage.setItem(
+          "data",
+          JSON.stringify({ data: response.data, role: "Admin" })
+        );
+
         navigate("/AdminLogin/Dashboard");
         dispatch(
           login({
@@ -58,10 +63,10 @@ const AdminLogin = () => {
         );
       }
     } catch (error) {
-      notify()
+      notify();
       console.error(error);
-    };
-  };
+    }
+  }
   return (
     <div>
       <ToastContainer
@@ -76,7 +81,7 @@ const AdminLogin = () => {
         pauseOnHover
         theme="colored"
       />
-      <Container fluid className="bg-success">
+      <Container fluid className="bg-success main">
         <Row>
           <Col md className=" p-5 ">
             <h2 className="text-primary text-center pt-3 text-dark">
@@ -138,6 +143,6 @@ const AdminLogin = () => {
       </Container>
     </div>
   );
-}
+};
 
-export default AdminLogin
+export default AdminLogin;

@@ -1,9 +1,10 @@
-.Appointment-div{
+.Appointment-div {
     cursor: pointer;
 }
-.nav-head{
+
+.nav-head {
     display: flex !important;
     width: 100% !important;
     justify-content: space-between !important;
-    
+
 }

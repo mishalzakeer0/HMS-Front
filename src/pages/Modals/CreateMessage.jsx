@@ -4,9 +4,9 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { useForm, Controller, useFormState } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
-import axios from "../../../api/axios";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import axios from "../../api/axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CreateMessage = ({ show, handClick, token, user }) => {
   const {
@@ -29,23 +29,21 @@ const CreateMessage = ({ show, handClick, token, user }) => {
       progress: undefined,
       theme: "colored",
     });
-    const notifyError = () =>
-      toast.error("Error While Creating Message", {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-        theme: "colored",
-      });
+  const notifyError = () =>
+    toast.error("Error While Creating Message", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      theme: "colored",
+    });
 
   async function CreateMsg(formData) {
     try {
-    //   console.log("Form Data:", formData);
-    //   console.log(token, "tokenhere");
       const response = await axios.post(
         `http://localhost:3001/${user}/message/create`,
         formData,
@@ -56,9 +54,8 @@ const CreateMessage = ({ show, handClick, token, user }) => {
         }
       );
       notifySuccess();
-
     } catch (error) {
-      notifyError()
+      notifyError();
       console.error(error);
     }
   }
@@ -78,7 +75,6 @@ const CreateMessage = ({ show, handClick, token, user }) => {
         theme="colored"
       />
       <Modal show={show} onHide={handClick}>
-    
         <Form onSubmit={handleSubmit(CreateMsg)}>
           <Modal.Header closeButton>
             <Modal.Title>Create Message</Modal.Title>

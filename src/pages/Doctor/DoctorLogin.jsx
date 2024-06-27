@@ -6,10 +6,11 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import axios from "../../api/axios";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from 'react-redux';
+import { useDispatch } from "react-redux";
 import { login } from "../../feature/userSlice";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "./DoctorLogin.css";
 const DoctorLogin = () => {
   const form = useForm();
   const {
@@ -18,19 +19,20 @@ const DoctorLogin = () => {
     formState: { errors },
     control,
   } = form;
-  const notify = () => toast.error('Error while logging', {
-    position: "top-center",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "colored",
+  const notify = () =>
+    toast.error("Error while logging", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
     });
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
- 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   async function Login(data) {
     try {
       const response = await axios.post(
@@ -44,10 +46,11 @@ const DoctorLogin = () => {
 
       console.log(response, "response");
       if (response.status === 200) {
-        localStorage.setItem('data', JSON.stringify({ data: response.data, role: 'Doctor' }));
+        localStorage.setItem(
+          "data",
+          JSON.stringify({ data: response.data, role: "Doctor" })
+        );
 
-        // localStorage.clear();
-        // console.log("LS", localStorage);
         dispatch(
           login({
             user: "Doctor",
@@ -55,11 +58,11 @@ const DoctorLogin = () => {
             password: response.data.password,
             loggedIn: true,
           })
-          );
-        navigate('/DoctorLogin/Dashboard');
+        );
+        navigate("/DoctorLogin/Dashboard");
       }
     } catch (error) {
-      notify()
+      notify();
       console.error(error);
     }
   }
@@ -77,7 +80,7 @@ const DoctorLogin = () => {
         pauseOnHover
         theme="colored"
       />
-      <Container fluid className="bg-warning">
+      <Container fluid className="bg-warning main">
         <Row>
           <Col md className=" p-5 ">
             <h2 className="text-primary text-center pt-3">Doctor Login</h2>

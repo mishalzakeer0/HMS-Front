@@ -3,36 +3,33 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { signout } from "../../utils/utils";
 import { IoSettings } from "react-icons/io5";
-import './DoctorDashboard.css'
+import "./DoctorDashboard.css";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import DoctorSignUp from "../Admin/Modals/DoctorSignUp";
-import ShowPatients from "../Admin/Modals/ShowPatients";
-import Message from "../Admin/Modals/ShowMessage";
-
+import DoctorSignUp from "../Modals/DoctorSignUp";
+import ShowPatients from "../Modals/ShowPatients";
+import ShowMessage from "../Modals/ShowMessage";
 
 const DoctorDashboard = () => {
   const [show, setShow] = useState(0);
 
   const handleClick = (item) => {
     setShow(item);
-    // console.log(show);
   };
   const data = localStorage.getItem("data");
-        const parsedData = JSON.parse(data);
-        const token = parsedData.data.token;
+  const parsedData = JSON.parse(data);
+  const token = parsedData.data.token;
   return (
     <>
       <Navbar bg="dark" data-bs-theme="dark">
         <Container>
           <Navbar.Brand>Doctor Dashboard</Navbar.Brand>
           <Nav className="d-flex justify-content-between ">
-            {/* <Link className='text-secondary p-2 Appointment-div' to="/PatientLogin/Dashboard/Appointment"> Appointment </Link> */}
-            <NavDropdown className="d-flex justify-content-end"
+            <NavDropdown
+              className="d-flex justify-content-end"
               title={<IoSettings size={"20px"} color="grey" />}
               id="basic-nav-dropdown"
             >
@@ -68,12 +65,33 @@ const DoctorDashboard = () => {
               handleClick(3);
             }}
           >
-            <h3>Show Messages</h3> 
+            <h3>Show Messages</h3>
           </Col>
         </Row>
-        {<DoctorSignUp show={show === 1} handClick={handleClick} token={token} user={"doctor"} />}
-        {<ShowPatients show={show ===2} handClick={handleClick}  token={token} user={"doctor"} />}
-        {<Message show={show ===3} handClick={handleClick} token={token} user={"doctor"}/>}
+        {
+          <DoctorSignUp
+            show={show === 1}
+            handClick={handleClick}
+            token={token}
+            user={"doctor"}
+          />
+        }
+        {
+          <ShowPatients
+            show={show === 2}
+            handClick={handleClick}
+            token={token}
+            user={"doctor"}
+          />
+        }
+        {
+          <ShowMessage
+            show={show === 3}
+            handClick={handleClick}
+            token={token}
+            user={"doctor"}
+          />
+        }
       </Container>
     </>
   );

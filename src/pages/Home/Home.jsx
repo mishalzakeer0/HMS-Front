@@ -1,19 +1,19 @@
 import React from "react";
-import { ChatDotsFill, PhoneFill, Mailbox, Facebook, Instagram} from "react-bootstrap-icons";
+import { PhoneFill, Mailbox, Facebook, Instagram } from "react-bootstrap-icons";
 import {} from "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import DrImg from '../../assets/images/doctor.png'
-import './Home.css'
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import DrImg from "../../assets/images/doctor.png";
+import "./Home.css";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import { useNavigate, Link } from "react-router-dom";
 const Home = () => {
   const navigate = useNavigate();
   const buttonSubmit = () => {
-    navigate('/PatientLogin');
-  }
+    navigate("/PatientLogin");
+  };
   return (
     <>
       <Container fluid className="navbar-items">
@@ -21,7 +21,9 @@ const Home = () => {
           <Col>
             <Navbar expand="lg" className="d-flex flex-wrap align-items-center">
               <Container>
-              <Navbar.Brand as={Link} to="/">Medic.</Navbar.Brand>
+                <Navbar.Brand as={Link} to="/">
+                  Medic.
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                   <Nav className="me-auto">
@@ -37,7 +39,11 @@ const Home = () => {
                     <Link className="p-2 text-secondary" to="PatientLogin">
                       Patient Login
                     </Link>
-                    <Link className="p-2 text-secondary" id="small-screen" to="adminLogin">
+                    <Link
+                      className="p-2 text-secondary"
+                      id="small-screen"
+                      to="adminLogin"
+                    >
                       Admin Login
                     </Link>
                   </Nav>
@@ -47,9 +53,9 @@ const Home = () => {
           </Col>
           <Col id="big-screen" className="contact-div">
             <button
-            onClick={()=>{
-              navigate('/PatientSignUp')
-            }}
+              onClick={() => {
+                navigate("/PatientSignUp");
+              }}
               type="button"
               className="btn btn-outline-primary rounded-pill contact-btn"
             >

@@ -11,8 +11,9 @@ import AdminDashboard from "./pages/Admin/AdminDashboard";
 import DoctorLogin from "./pages/Doctor/DoctorLogin";
 import AdminLogin from "./pages/Admin/AdminLogin";
 import { Navigate } from "react-router-dom";
+import ForgotPassword from "./pages/Patient/PatientLogin/ForgotPassword/ForgotPassword";
+import ResetPassword from "./pages/Patient/PatientLogin/ForgotPassword/ResetPass";
 import IsAuthenticated from "./guard/IsAuthenticated";
-
 
 const App = () => {
   const storedData = JSON.parse(localStorage.getItem("data"));
@@ -34,6 +35,11 @@ const App = () => {
             <PatientLogin />
           </IsAuthenticated>
         }
+      />
+      <Route path="/PatientLogin/ForgotPassword" element={<ForgotPassword />} />
+      <Route
+        path="/PatientLogin/ForgotPassword/ResetPassword/:token"
+        element={<ResetPassword />}
       />
 
       <Route
@@ -88,7 +94,7 @@ const App = () => {
       )}
       {/* admin conditional rendering */}
 
-      {storedData?.data.token && storedData.role === "Admin" ?(
+      {storedData?.data.token && storedData.role === "Admin" ? (
         <Route path="/AdminLogin/Dashboard/" element={<AdminDashboard />} />
       ) : (
         <Route

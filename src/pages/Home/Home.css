@@ -49,10 +49,11 @@ h4 {
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.3)
 }
 
-.footer{
+.footer {
     background-color: #0000004a;
-    padding: 0 
+    padding: 0
 }
+
 @media (min-width: 992px) {
     #small-screen {
         display: none !important;

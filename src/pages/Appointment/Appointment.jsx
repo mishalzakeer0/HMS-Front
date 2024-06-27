@@ -1,18 +1,17 @@
-import React, { useEffect, useState } from 'react'
-import {} from "../../../node_modules/bootstrap/dist/css/bootstrap.min.css"
+import React, { useEffect, useState } from "react";
+import {} from "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { ArrowRightCircleFill } from "react-bootstrap-icons";
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import './Appointment.css'
-import {useForm} from 'react-hook-form'
-import { DevTool } from '@hookform/devtools';
-import axios from 'axios';
-import DatePicker from 'react-date-picker';
-import 'react-date-picker/dist/DatePicker.css';
-import 'react-calendar/dist/Calendar.css';
-import { Controller } from 'react-hook-form';
-
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import "./Appointment.css";
+import { useForm } from "react-hook-form";
+import { DevTool } from "@hookform/devtools";
+import axios from "axios";
+import DatePicker from "react-date-picker";
+import "react-date-picker/dist/DatePicker.css";
+import "react-calendar/dist/Calendar.css";
+import { Controller } from "react-hook-form";
 
 const Appointment = () => {
   const form = useForm();
@@ -20,8 +19,7 @@ const Appointment = () => {
   const parsedData = JSON.parse(data);
   const token = parsedData.data.token;
   const patient_id = parsedData.data.id;
-  
-  // console.log(localStorage,"ls");
+
   const {
     register,
     handleSubmit,
@@ -32,7 +30,6 @@ const Appointment = () => {
     defaultValues: { appointment_date: new Date() },
   });
   const [doctor, setDoctor] = useState([]);
- 
 
   useEffect(() => {
     async function getUser() {
@@ -41,33 +38,30 @@ const Appointment = () => {
           "http://localhost:3001/admin/doctor/all"
         );
         setDoctor(response.data.message);
-        
       } catch (error) {
         console.error(error);
       }
-    } 
+    }
     getUser();
   }, []);
   async function CreateAppointment(data) {
     try {
-      // console.log(token,"tok")
-      // console.log(data, "data");
-      data.patient_id = patient_id
-      console.log(data, "formdata")
-      const response = await axios.post('http://localhost:3001/patient/appointment/create', data,{
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        
-      } );
+      data.patient_id = patient_id;
+      console.log(data, "formdata");
+      const response = await axios.post(
+        "http://localhost:3001/patient/appointment/create",
+        data,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       console.log(response);
     } catch (error) {
       console.error(error);
-      // console.log(localStorage.data,"ls")
-       
-    };
-  };
-  
+    }
+  }
 
   return (
     <div className="body-div">
@@ -112,7 +106,11 @@ const Appointment = () => {
                 Make Appointment
               </h2>
 
-              <form className="p-4" onSubmit={handleSubmit(CreateAppointment)} noValidate>
+              <form
+                className="p-4"
+                onSubmit={handleSubmit(CreateAppointment)}
+                noValidate
+              >
                 {/* Appointment form here */}
                 <div className="pb-2">
                   <label>Choose a Doctors from this list:</label>
@@ -170,6 +168,6 @@ const Appointment = () => {
       </Container>
     </div>
   );
-}
+};
 
-export default Appointment
+export default Appointment;

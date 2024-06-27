@@ -1,4 +1,4 @@
-export const signout =(()=> {
-    localStorage.clear();
-    window.location.assign('/')
-})
+export const signout = () => {
+  localStorage.clear();
+  window.location.assign("/");
+};

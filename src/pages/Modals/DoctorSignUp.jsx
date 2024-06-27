@@ -6,34 +6,32 @@ import PhoneInput from "react-phone-number-input";
 import { isValidPhoneNumber } from "react-phone-number-input";
 import { useForm, Controller, useFormState } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
-import axios from "../../../api/axios";
+import axios from "../../api/axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const DoctorSignUp = ({ show, handClick, token, user}) => {
-  
+const DoctorSignUp = ({ show, handClick, token, user }) => {
   const [number, setNumber] = useState("");
   const {
     register,
     handleSubmit,
     formState: { errors },
     control,
-    
   } = useForm({
     mode: "onChange",
   });
-  const { isValid } = useFormState({control});
+  const { isValid } = useFormState({ control });
   const notifySuccess = () =>
-  toast.success("Account Successfully Created", {
-    position: "top-center",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "colored",
-  });
+    toast.success("Account Successfully Created", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
   const notifyError = () =>
     toast.error("Error While Creating Account", {
       position: "top-center",
@@ -46,14 +44,11 @@ const DoctorSignUp = ({ show, handClick, token, user}) => {
       theme: "colored",
       theme: "colored",
     });
-  
+
   async function SignUp(formData) {
     try {
-      // console.log("Form Data:", formData);
-      // console.log("token", token);
-  
       let response;
-  
+
       if (user === "admin") {
         response = await axios.post(
           "http://localhost:3001/admin/doctor/create",
@@ -63,11 +58,10 @@ const DoctorSignUp = ({ show, handClick, token, user}) => {
               Authorization: `Bearer ${token}`,
             },
           }
-          );
-          
-      notifySuccess()
-      } 
-      else {
+        );
+
+        notifySuccess();
+      } else {
         response = await axios.post(
           "http://localhost:3001/doctor/signUp",
           formData,
@@ -77,20 +71,17 @@ const DoctorSignUp = ({ show, handClick, token, user}) => {
             },
           }
         );
-        notifySuccess()
+        notifySuccess();
       }
       console.log(response);
-      
     } catch (error) {
-      notifyError()
+      notifyError();
       console.error(error);
     }
   }
-  
 
   return (
     <>
-      
       <ToastContainer
         position="top-center"
         autoClose={5000}

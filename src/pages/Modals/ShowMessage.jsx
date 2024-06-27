@@ -1,43 +1,40 @@
 import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import axios from "../../../api/axios";
+import axios from "../../api/axios";
 import Confirmation from "./Confirmation";
 import { ImBin2 } from "react-icons/im";
 import Table from "react-bootstrap/Table";
 
-const ShowAppointment = ({ show, handClick, token, user }) => {
-  const [appointments, setAppointment] = useState([]);
+const ShowMessage = ({ show, handClick, token, user }) => {
+  const [messages, setMessages] = useState([]);
   const [confirm, setConfirm] = useState(false);
   const [id, setId] = useState(0);
-
-  //    console.log(messages, "mess")
   const handleClick = () => {
-    setId();
     setConfirm(!confirm);
   };
-  console.log(user, "useee");
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         // console.log(token, "tokenhere")
         const response = await axios.get(
-          `http://localhost:3001/${user}/appointment/all`,
+          `http://localhost:3001/${user}/message/all`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
             },
           }
         );
-        console.log(response.data.message, "msg");
-        setAppointment(response.data.message);
+        //   console.log(response.data.message, "msg")
+        setMessages(response.data.message);
       } catch (error) {
         console.error("Error fetching Messages:", error);
       }
     };
 
     fetchData();
-  }, []);
+  }, [confirm]);
   return (
     <Modal
       show={show}
@@ -47,31 +44,31 @@ const ShowAppointment = ({ show, handClick, token, user }) => {
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Appointment
-        </Modal.Title>
+        <Modal.Title id="contained-modal-title-vcenter">Messages</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Table striped>
           <thead>
             <tr>
               <th>#</th>
-              <th>Appointment Id</th>
-              <th>Doctor Id</th>
-              <th>Patient Id</th>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Gender</th>
+              <th>Message</th>
             </tr>
           </thead>
           <tbody>
-            {appointments.map((appointment, index) => (
-              <tr key={appointment.id}>
+            {messages.map((msg, index) => (
+              <tr key={msg.id}>
                 <td>{index + 1}</td>
-                <td>{appointment.appointment_id}</td>
-                <td>{appointment.doctor_id}</td>
-                <td>{appointment.patient_id}</td>
+                <td>{msg.first_name}</td>
+                <td>{msg.age}</td>
+                <td>{msg.gender}</td>
+                <td>{msg.message}</td>
                 <button
                   className="del-btn"
                   onClick={() => {
-                    setId(appointment.appointment_id);
+                    setId(msg.id);
 
                     setConfirm(true);
                   }}
@@ -88,10 +85,9 @@ const ShowAppointment = ({ show, handClick, token, user }) => {
           id={id}
           token={token}
           user={user}
-          target={"appointment"}
+          target={"message"}
         />
       </Modal.Body>
-
       <Modal.Footer>
         <Button onClick={handClick}>Close</Button>
       </Modal.Footer>
@@ -99,4 +95,4 @@ const ShowAppointment = ({ show, handClick, token, user }) => {
   );
 };
 
-export default ShowAppointment;
+export default ShowMessage;
