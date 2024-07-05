@@ -20,7 +20,7 @@ const ShowPatients = ({ show, handClick, token, user }) => {
     const fetchData = async (token) => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/${user}/patient/all`,
+          `https://hms-1-1kdd.onrender.com:3001/${user}/patient/all`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

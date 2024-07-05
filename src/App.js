@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
 import Home from "./pages/Home/Home";
-import { Routes, Route, useNavigate, Redirect } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Appointment from "./pages/Appointment/Appointment";
 import PatientLogin from "./pages/Patient/PatientLogin/PatientLogin";
