@@ -12,7 +12,7 @@ import { useNavigate, Link } from "react-router-dom";
 const Home = () => {
   const navigate = useNavigate();
   const buttonSubmit = () => {
-    <Link to={"/PatientLogin"}></Link>;
+    navigate("/PatientLogin");
   };
   return (
     <>
@@ -54,7 +54,7 @@ const Home = () => {
           <Col id="big-screen" className="contact-div">
             <button
               onClick={() => {
-                <Link to={"/PatientSignUp"}></Link>;
+                navigate("/PatientSignUp");
               }}
               type="button"
               className="btn btn-outline-primary rounded-pill contact-btn"

@@ -52,7 +52,7 @@ const AdminLogin = () => {
           JSON.stringify({ data: response.data, role: "Admin" })
         );
 
-        <Link to={"/AdminLogin/Dashboard"}></Link>
+        navigate("/AdminLogin/Dashboard")
         dispatch(
           login({
             user: "Admin",

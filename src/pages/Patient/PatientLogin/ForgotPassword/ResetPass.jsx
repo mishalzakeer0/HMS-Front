@@ -26,7 +26,7 @@ const ResetPass = () => {
       );
       if (response.status === 200) {
         console.log(response);
-        <Link to={"/PatientLogin"}></Link>
+        navigate("/PatientLogin")
       }
     } catch (error) {
       notify();

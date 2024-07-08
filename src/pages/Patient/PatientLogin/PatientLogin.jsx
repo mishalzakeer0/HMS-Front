@@ -132,26 +132,29 @@ const PatientLogin = () => {
             >
               <button
                 type="submit"
-                className="btn btn-danger"
+                className="btn btn-primary"
                 id="login button"
               >
                 Submit
               </button>
               <p
-                onClick={() => <Link to={"/PatientLogin/ForgotPassword"}></Link>}
+                onClick={() => navigate("/PatientLogin/ForgotPassword")}
                 className="text-primary"
                 style={{ cursor: "pointer" }}
               >
-                Forgot Passwor?
+                Forgot Password?
               </p>
             </div>
           </form>
           <p className="text-primary">
-        Don't have an account?
-        <span>
-          <Link to="/PatientSignUp">Sign Up here</Link>
-        </span>
-      </p>
+            Don't have an account?
+            <span
+              onClick={() => navigate('/PatientSignUp')}
+              style={{ cursor: 'pointer', color: 'blue', textDecoration: 'underline' }}
+            >
+              Sign Up here
+            </span>
+          </p>
           <DevTool control={control} />
         </Col>
       </Row>

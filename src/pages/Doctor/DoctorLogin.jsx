@@ -59,7 +59,7 @@ const DoctorLogin = () => {
             loggedIn: true,
           })
         );
-        <Link to={"/DoctorLogin/Dashboard"}> </Link>;
+       navigate("/DoctorLogin/Dashboard");
       }
     } catch (error) {
       notify();
