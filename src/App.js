@@ -77,7 +77,7 @@ const App = () => {
       ) : (
         <Route
           path="/PatientLogin/Dashboard/Appointment"
-          element={<Navigate to="/PatientLogin" />}
+          element={<Appointment/>}
         />
       )}
 
@@ -88,7 +88,7 @@ const App = () => {
       ) : (
         <Route
           path="/DoctorLogin/Dashboard/"
-          element={<Navigate to="/DoctorLogin" />}
+          element={<DoctorDashboard/>}
         />
       )}
       {/* admin conditional rendering */}
