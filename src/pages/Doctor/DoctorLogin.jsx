@@ -36,7 +36,7 @@ const DoctorLogin = () => {
   async function Login(data) {
     try {
       const response = await axios.post(
-        "https://hms-1-1kdd.onrender.com:3001/doctor/Login",
+        "https://hms-1-ohin.onrender.com/doctor/Login",
         data,
         {
           headers: { "Content-Type": "application/json" },

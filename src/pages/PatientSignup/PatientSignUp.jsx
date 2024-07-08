@@ -29,7 +29,7 @@ const PatientSignUp = () => {
   async function SignUp(data) {
     try {
       const response = await axios.post(
-        "https://hms-1-1kdd.onrender.com:3001/patient/signUp",
+        "https://hms-1-ohin.onrender.com/patient/signUp",
         data
       );
       if (response.status === 200) {

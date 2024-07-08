@@ -21,7 +21,7 @@ const ShowDoctor = ({ show, handClick, token, user }) => {
       try {
 
         const response = await axios.get(
-          `https://hms-1-1kdd.onrender.com:3001/${user}/doctor/all`,
+          `https://hms-1-ohin.onrender.com/${user}/doctor/all`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

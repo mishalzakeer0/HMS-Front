@@ -35,7 +35,7 @@ const Appointment = () => {
     async function getUser() {
       try {
         const response = await axios.get(
-          "https://hms-1-1kdd.onrender.com:3001/admin/doctor/all"
+          "https://hms-1-ohin.onrender.com/admin/doctor/all"
         );
         setDoctor(response.data.message);
       } catch (error) {
@@ -49,7 +49,7 @@ const Appointment = () => {
       data.patient_id = patient_id;
       console.log(data, "formdata");
       const response = await axios.post(
-        "https://hms-1-1kdd.onrender.com/patient/appointment/create",
+        "https://hms-1-ohin.onrender.com/patient/appointment/create",
         data,
         {
           headers: {
