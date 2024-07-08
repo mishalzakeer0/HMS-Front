@@ -5,7 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "./PatientLogin.css";
 import axios from "../../../api/axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login } from "../../../feature/userSlice";
 import { ToastContainer, toast } from "react-toastify";
@@ -146,11 +146,11 @@ const PatientLogin = () => {
             </div>
           </form>
           <p className="text-primary">
-            doesn't have an account?
-            <span>
-              <a href="/PatientSignUp">Sign Up here </a>
-            </span>
-          </p>
+        Don't have an account?
+        <span>
+          <Link to="/PatientSignUp">Sign Up here</Link>
+        </span>
+      </p>
           <DevTool control={control} />
         </Col>
       </Row>
