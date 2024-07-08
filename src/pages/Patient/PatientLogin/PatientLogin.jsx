@@ -141,7 +141,7 @@ const PatientLogin = () => {
                 className="text-primary"
                 style={{ cursor: "pointer" }}
               >
-                Forgot Password?
+                Forgot Passwor?
               </p>
             </div>
           </form>
