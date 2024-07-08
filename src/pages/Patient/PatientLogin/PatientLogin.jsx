@@ -50,7 +50,7 @@ const PatientLogin = () => {
           JSON.stringify({ data: response.data, role: "Patient" })
         );
 
-        <Link to={"/PatientLogin/Dashboard"}></Link>
+        <navigate to={"/PatientLogin/Dashboard"}></navigate>
         dispatch(
           login({
             user: "Patient",
