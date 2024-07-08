@@ -1,7 +1,7 @@
 import React from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -26,7 +26,7 @@ const ResetPass = () => {
       );
       if (response.status === 200) {
         console.log(response);
-        navigate("/PatientLogin");
+        <Link to={"/PatientLogin"}></Link>
       }
     } catch (error) {
       notify();

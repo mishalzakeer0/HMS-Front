@@ -50,7 +50,7 @@ const PatientLogin = () => {
           JSON.stringify({ data: response.data, role: "Patient" })
         );
 
-        navigate("/PatientLogin/Dashboard");
+        <Link to={"/PatientLogin/Dashboard"}></Link>
         dispatch(
           login({
             user: "Patient",
@@ -137,7 +137,7 @@ const PatientLogin = () => {
                 Submit
               </button>
               <p
-                onClick={() => navigate("/PatientLogin/ForgotPassword")}
+                onClick={() => <Link to={"/PatientLogin/ForgotPassword"}></Link>}
                 className="text-primary"
                 style={{ cursor: "pointer" }}
               >

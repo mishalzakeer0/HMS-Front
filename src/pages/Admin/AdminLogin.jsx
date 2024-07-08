@@ -6,7 +6,7 @@ import { DevTool } from "@hookform/devtools";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link} from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login } from "../../feature/userSlice";
 import { ToastContainer, toast } from "react-toastify";
@@ -52,7 +52,7 @@ const AdminLogin = () => {
           JSON.stringify({ data: response.data, role: "Admin" })
         );
 
-        navigate("/AdminLogin/Dashboard");
+        <Link to={"/AdminLogin/Dashboard"}></Link>
         dispatch(
           login({
             user: "Admin",

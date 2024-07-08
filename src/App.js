@@ -9,7 +9,7 @@ import DoctorDashboard from "./pages/Doctor/DoctorDashboard";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import DoctorLogin from "./pages/Doctor/DoctorLogin";
 import AdminLogin from "./pages/Admin/AdminLogin";
-import { Navigate } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 import ForgotPassword from "./pages/Patient/PatientLogin/ForgotPassword/ForgotPassword";
 import ResetPassword from "./pages/Patient/PatientLogin/ForgotPassword/ResetPass";
 import IsAuthenticated from "./guard/IsAuthenticated";

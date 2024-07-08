@@ -12,7 +12,7 @@ import "react-date-picker/dist/DatePicker.css";
 import "react-calendar/dist/Calendar.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const PatientSignUp = () => {
   const {
@@ -34,7 +34,7 @@ const PatientSignUp = () => {
       );
       if (response.status === 200) {
         console.log(response);
-        navigate("/PatientLogin");
+        <Link to={"/PatientLogin"}></Link>;
       }
     } catch (error) {
       notify();

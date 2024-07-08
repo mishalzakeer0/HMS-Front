@@ -5,7 +5,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import axios from "../../api/axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link} from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login } from "../../feature/userSlice";
 import { ToastContainer, toast } from "react-toastify";
@@ -59,7 +59,7 @@ const DoctorLogin = () => {
             loggedIn: true,
           })
         );
-        navigate("/DoctorLogin/Dashboard");
+        <Link to={"/DoctorLogin/Dashboard"}> </Link>;
       }
     } catch (error) {
       notify();
