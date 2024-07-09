@@ -65,7 +65,7 @@ const App = () => {
       ) : (
         <Route
           path="/PatientLogin/Dashboard/"
-          element={<PatientDashboard/>}
+          element={<PatientLogin/>}
         />
       )}
 
