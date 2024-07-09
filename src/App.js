@@ -60,14 +60,11 @@ const App = () => {
 
       {/* patient conditional rendering */}
 
-      {storedData?.data.token && storedData.role === "Patient" ? (
-        <Route path="/PatientLogin/Dashboard/" element={<PatientDashboard />} />
-      ) : (
-        <Route
-          path="/PatientLogin/Dashboard/"
-          element={<PatientLogin/>}
-        />
-      )}
+      {storedData?.data?.token && storedData.role === "Patient" ? (
+          <Route path="/PatientLogin/Dashboard" element={<PatientDashboard />} />
+        ) : (
+          <Route path="/PatientLogin/Dashboard" element={<PatientLogin />} />
+        )}
 
       {storedData?.data.token && storedData.role === "Patient" ? (
         <Route
