@@ -20,9 +20,6 @@ const AdminLogin = () => {
     control,
   } = form;
 
-  const handleNavigation = () => {
-    navigate('/AdminLogin/Dashboard');
-};
   const notify = () =>
     toast.error("Error while logging", {
       position: "top-center",
@@ -55,9 +52,7 @@ const AdminLogin = () => {
           JSON.stringify({ data: response.data, role: "Admin" })
         );
 
-        <div>
-          <button onClick={handleNavigation}>Go to Dashboard</button>
-        </div>;
+        navigate('/AdminLogin/Dashboard')
         dispatch(
           login({
             user: "Admin",
