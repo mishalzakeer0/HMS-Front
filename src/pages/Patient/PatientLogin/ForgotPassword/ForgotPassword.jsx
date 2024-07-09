@@ -19,7 +19,7 @@ const ForgotPassword = () => {
     try {
       console.log("hi", data.email);
       const response = await axios.get(
-        "http://localhost:3001/patient/forgotPassword",
+        "https://hms-1-ohin.onrender.com/patient/forgotPassword",
         {
           params: {
             email: data.email,
