@@ -132,7 +132,7 @@ const PatientLogin = () => {
             >
               <button
                 type="submit"
-                className="btn btn-danger"
+                className="btn btn-primary"
                 id="login button"
               >
                 Submit
