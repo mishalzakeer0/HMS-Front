@@ -21,7 +21,7 @@ const ResetPass = () => {
   async function Reset(data) {
     try {
       const response = await axios.post(
-        `https://hms-1-ohin.onrender.com/patient/resetPassword/${token}`,
+        `http://localhost:3001/patient/resetPassword/${token}`,
         data
       );
       if (response.status === 200) {

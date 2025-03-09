@@ -33,7 +33,7 @@ const Confirmation = ({ show, handleClick, id, token, user, target }) => {
   const deleteConfirm = async (id, token) => {
     try {
       const response = await axios.delete(
-        `https://hms-1-ohin.onrender.com/${user}/${target}/delete`,
+        `http://localhost:3001/${user}/${target}/delete`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

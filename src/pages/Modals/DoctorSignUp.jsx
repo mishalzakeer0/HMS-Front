@@ -51,7 +51,7 @@ const DoctorSignUp = ({ show, handClick, token, user }) => {
 
       if (user === "admin") {
         response = await axios.post(
-          "https://hms-1-ohin.onrender.com/admin/doctor/create",
+          "http://localhost:3001/admin/doctor/create",
           formData,
           {
             headers: {
@@ -63,7 +63,7 @@ const DoctorSignUp = ({ show, handClick, token, user }) => {
         notifySuccess();
       } else {
         response = await axios.post(
-          "https://hms-1-ohin.onrender.com/doctor/signUp",
+          "http://localhost:3001/doctor/signUp",
           formData,
           {
             headers: {
