@@ -19,7 +19,7 @@ const ShowMessage = ({ show, handClick, token, user }) => {
       try {
         // console.log(token, "tokenhere")
         const response = await axios.get(
-          `http://localhost:3001/${user}/message/all`,
+          `https://hms-1-ohin.onrender.com/${user}/message/all`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
