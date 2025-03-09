@@ -45,7 +45,7 @@ const CreateMessage = ({ show, handClick, token, user }) => {
   async function CreateMsg(formData) {
     try {
       const response = await axios.post(
-        `https://hms-1-ohin.onrender.com/${user}/message/create`,
+        `http://localhost:3001/${user}/message/create`,
         formData,
         {
           headers: {

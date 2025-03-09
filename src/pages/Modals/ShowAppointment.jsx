@@ -21,7 +21,7 @@ const ShowAppointment = ({ show, handClick, token, user }) => {
       try {
    
         const response = await axios.get(
-          `https://hms-1-ohin.onrender.com/${user}/appointment/all`,
+          `http://localhost:3001/${user}/appointment/all`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

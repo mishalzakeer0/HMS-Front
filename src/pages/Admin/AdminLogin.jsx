@@ -37,7 +37,7 @@ const AdminLogin = () => {
   async function Login(data) {
     try {
       const response = await axios.post(
-        "https://hms-1-ohin.onrender.com/admin/Login",
+        "http://localhost:3001/admin/Login",
         data,
         {
           headers: { "Content-Type": "application/json" },
